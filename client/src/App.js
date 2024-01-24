@@ -6,6 +6,7 @@ import { useMemo } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Layout from "views/layout.jsx";
 import Dashboard from "views/dashboard.jsx";
+import Sector from "views/sector.jsx";
 
 function App() {
   const mode = useSelector((state) => state.global.mode);
@@ -20,6 +21,7 @@ function App() {
             <Route element={<Layout />}>
               <Route path="/" element={<Navigate to="/dashboard" replace />} />
               <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/sectors" element={<Sector />} />
             </Route>
           </Routes>
         </ThemeProvider>
