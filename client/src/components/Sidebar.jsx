@@ -38,7 +38,7 @@ const navItems = [
     icon: <HomeOutlined />,
   },
   {
-    text: "Fliter",
+    text: "Fliters",
     icon: null,
   },
   {
@@ -50,11 +50,11 @@ const navItems = [
     icon: <Groups2Outlined />,
   },
   {
-    text: "Sector",
+    text: "Sectors",
     icon: <ReceiptLongOutlined />,
   },
   {
-    text: "Region",
+    text: "Regions",
     icon: <ReceiptLongOutlined />,
   },
   {
