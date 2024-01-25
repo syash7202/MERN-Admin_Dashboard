@@ -13,6 +13,7 @@ import Country from "views/country";
 import Source from "views/source";
 import Topic from "views/topic";
 import EndYear from "views/endYear";
+import Geography from "views/geoMapping";
 
 function App() {
   const mode = useSelector((state) => state.global.mode);
@@ -27,8 +28,8 @@ function App() {
             <Route element={<Layout />}>
               <Route path="/" element={<Navigate to="/dashboard" replace />} />
               <Route path="/dashboard" element={<Dashboard />} />
-              {/* <Route path="/topic" element={<Topic />} /> */}
-              <Route path="/end year" element={<EndYear />} />
+              <Route path="/geoMap" element={<Geography />} />
+              <Route path="/year" element={<EndYear />} />
               <Route path="/topic" element={<Topic />} />
               <Route path="/sectors" element={<Sector />} />
               <Route path="/regions" element={<Region />} />

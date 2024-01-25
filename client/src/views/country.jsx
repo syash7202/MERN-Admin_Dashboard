@@ -13,7 +13,7 @@ const Country = () => {
   const { data, isLoading } = useGetCountryQuery({
     search,
   });
-  console.log(data);
+  // console.log(data);
 
   const columns = [
     {

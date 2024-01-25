@@ -11,7 +11,8 @@ import {
 
 const router = Router();
 
-router.get("/end year", getEndYear);
+//filter routes
+router.get("/year", getEndYear);
 router.get("/topic", getTopic);
 router.get("/sectors", getSector);
 router.get("/regions", getRegion);

@@ -37,11 +37,19 @@ const navItems = [
     icon: <HomeOutlined />,
   },
   {
+    text: "Visuals",
+    icon: null,
+  },
+  {
+    text: "GeoMap",
+    icon: <PointOfSaleOutlined />,
+  },
+  {
     text: "Fliters",
     icon: null,
   },
   {
-    text: "End Year",
+    text: "Year",
     icon: <CalendarMonthOutlined />,
   },
   {

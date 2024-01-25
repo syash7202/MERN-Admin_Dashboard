@@ -12,6 +12,7 @@ export const api = createApi({
     "PEST",
     "Source",
     "Country",
+    "GeoMapping",
   ],
   endpoints: (build) => ({
     //dev test api for connections and particular search
@@ -21,7 +22,7 @@ export const api = createApi({
     // }),
     getEndYear: build.query({
       query: ({ search }) => ({
-        url: `filter/end year/`,
+        url: `filter/year/`,
         method: "GET",
         params: { search },
       }),
@@ -71,6 +72,12 @@ export const api = createApi({
       }),
       providesTags: ["Source"],
     }),
+
+    // visualization api mapping
+    geoMap: build.query({
+      query: () => `general/geoMap/`,
+      providesTags: ["GeoMapping"],
+    }),
   }),
 });
 
@@ -83,4 +90,5 @@ export const {
   useGetPESTQuery,
   useGetSourceQuery,
   useGetCountryQuery,
+  useGeoMapQuery,
 } = api; // use and query additional and getData is endpoint

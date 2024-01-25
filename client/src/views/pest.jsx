@@ -13,7 +13,7 @@ const Pestle = () => {
   const { data, isLoading } = useGetPESTQuery({
     search,
   });
-  console.log(data);
+  // console.log(data);
 
   const columns = [
     {

@@ -1,24 +1,36 @@
 import { Data } from "../models/data.model.js";
 
+// filter controllers
 const getEndYear = async (req, res) => {
   try {
     const { search = "" } = req.query;
 
-    const endYear = await Data.find({
-      $or: [
-        { end_year: { $regex: new RegExp(search, "i") } },
-        // can multiple check field for better search
-      ],
-    });
+    if (search == "") {
+      const endYear = await Data.find();
 
-    const total = await Data.countDocuments({
-      end_year: { $regex: search, $options: "i" }, // total number of that region matches found in DB
-    });
+      const total = await Data.countDocuments();
 
-    res.status(200).json({
-      endYear,
-      total,
-    });
+      res.status(200).json({
+        endYear,
+        total,
+      });
+    } else {
+      const endYear = await Data.find({
+        $or: [
+          { end_year: { $eq: parseInt(search, 10) } },
+          // can multiple check field for better search
+        ],
+      });
+
+      const total = await Data.countDocuments({
+        end_year: { $eq: parseInt(search, 10) }, // total number of that region matches found in DB
+      });
+
+      res.status(200).json({
+        endYear,
+        total,
+      });
+    }
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
