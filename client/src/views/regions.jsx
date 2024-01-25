@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, useTheme } from "@mui/material";
-import { useGetSectorQuery } from "state/api.js";
-import Header from "components/Header";
 import { DataGrid } from "@mui/x-data-grid";
-const Sector = () => {
+import { DataGridCustomToolbar } from "components/DataGridCustomToolbar.jsx";
+import { useGetRegionQuery } from "state/api.js";
+import Header from "components/Header.jsx";
+const Region = () => {
   const theme = useTheme();
-  const { data, isLoading } = useGetSectorQuery();
-  // console.log("data", data);
+
+  const [search, setSearch] = useState("");
+
+  const [searchInput, setSearchInput] = useState("");
+  const { data, isLoading } = useGetRegionQuery({
+    search,
+  });
+  //   console.log(data);
+
   const columns = [
     {
       field: "intensity",
@@ -14,9 +22,9 @@ const Sector = () => {
       flex: 0.2,
     },
     {
-      field: "sector",
-      headerName: "Sector",
-      flex: 0.25,
+      field: "region",
+      headerName: "Region",
+      flex: 0.3,
     },
     {
       field: "title",
@@ -42,10 +50,12 @@ const Sector = () => {
 
   return (
     <Box m="1.5rem 2.5rem">
-      <Header title="Sector" subtitle="List of Sector-wise search" />
+      <Header
+        title="Regions"
+        subtitle="Search through the entire list of regions"
+      />
       <Box
-        mt="40px"
-        height="75vh"
+        height="80vh"
         sx={{
           "& .MuiDataGrid-root": {
             border: "none",
@@ -74,12 +84,17 @@ const Sector = () => {
         <DataGrid
           loading={isLoading || !data}
           getRowId={(row) => row._id}
-          rows={data || []}
+          rows={(data && data.region) || []}
           columns={columns}
+          pagination
+          components={{ Toolbar: DataGridCustomToolbar }}
+          componentsProps={{
+            toolbar: { searchInput, setSearchInput, setSearch },
+          }}
         />
       </Box>
     </Box>
   );
 };
 
-export default Sector;
+export default Region;

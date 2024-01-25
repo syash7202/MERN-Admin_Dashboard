@@ -21,6 +21,6 @@ import filterRouter from "./routes/fliter.router.js";
 
 //routes
 app.use("/general", generalRouter);
-app.use("/fliter", filterRouter);
+app.use("/filter", filterRouter);
 
 export { app };

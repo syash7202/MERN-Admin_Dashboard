@@ -17,7 +17,6 @@ import {
   ChevronLeft,
   ChevronRightOutlined,
   HomeOutlined,
-  ShoppingCartOutlined,
   Groups2Outlined,
   ReceiptLongOutlined,
   PublicOutlined,
@@ -43,7 +42,7 @@ const navItems = [
   },
   {
     text: "End Year",
-    icon: <ShoppingCartOutlined />,
+    icon: <CalendarMonthOutlined />,
   },
   {
     text: "Topic",
@@ -55,27 +54,19 @@ const navItems = [
   },
   {
     text: "Regions",
-    icon: <ReceiptLongOutlined />,
+    icon: <PieChartOutlined />,
   },
   {
-    text: "PEST",
-    icon: <ReceiptLongOutlined />,
+    text: "PESTLE",
+    icon: <AdminPanelSettingsOutlined />,
   },
   {
     text: "Source",
-    icon: <ReceiptLongOutlined />,
-  },
-  {
-    text: "SWOT",
-    icon: <ReceiptLongOutlined />,
+    icon: <TodayOutlined />,
   },
   {
     text: "Country",
-    icon: <ReceiptLongOutlined />,
-  },
-  {
-    text: "City",
-    icon: <ReceiptLongOutlined />,
+    icon: <PublicOutlined />,
   },
 ];
 

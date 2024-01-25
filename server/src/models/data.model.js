@@ -46,6 +46,10 @@ const DataSchema = new mongoose.Schema({
   title: {
     type: String,
   },
+  country: {
+    type: String,
+  },
+
   likelihood: {
     type: Number,
   },
