@@ -62,16 +62,12 @@ const PieChart = ({ isDashboard = false }) => {
         cornerRadius={3}
         activeOuterRadiusOffset={8}
         borderWidth={5}
-        borderColor={{
-          from: "color",
-          modifiers: [["darker", 0.2]],
-        }}
         enableArcLinkLabels={!isDashboard}
         arcLinkLabelsTextColor={theme.palette.secondary[200]}
         arcLinkLabel={(e) => e.id + " (" + e.value + ")"}
         arcLinkLabelsThickness={2}
         arcLinkLabelsColor={{ from: "color" }}
-        arcLabelsSkipAngle={10}
+        arcLabelsSkipAngle={5}
         arcLabelsTextColor={{
           from: "color",
           modifiers: [["darker", 2]],
