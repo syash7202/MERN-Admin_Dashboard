@@ -8,6 +8,7 @@ import {
 const router = Router();
 
 router.get("/data/:id", getData);
+router.get("/dashboard", getLineChart);
 router.get("/geoMap", geoMapping);
 router.get("/lineChart", getLineChart);
 

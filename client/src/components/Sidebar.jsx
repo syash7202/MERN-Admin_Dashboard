@@ -24,9 +24,9 @@ import {
   TodayOutlined,
   CalendarMonthOutlined,
   AdminPanelSettingsOutlined,
-  TrendingUpOutlined,
-  PieChartOutlined,
 } from "@mui/icons-material";
+import BarChartIcon from "@mui/icons-material/BarChart";
+import PieChartOutlined from "@mui/icons-material/PieChartOutlined";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import FlexBetween from "./flexBetween";
@@ -44,17 +44,14 @@ const navItems = [
     text: "GeoMap",
     icon: <PointOfSaleOutlined />,
   },
-  {
-    text: "Lines",
-    icon: <PointOfSaleOutlined />,
-  },
+
   {
     text: "Pie",
-    icon: <PointOfSaleOutlined />,
+    icon: <PieChartOutlined />,
   },
   {
     text: "Bar",
-    icon: <PointOfSaleOutlined />,
+    icon: <BarChartIcon />,
   },
   {
     text: "Fliters",

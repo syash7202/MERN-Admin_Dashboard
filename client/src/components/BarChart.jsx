@@ -1,10 +1,11 @@
 import React from "react";
 import { ResponsiveBar } from "@nivo/bar";
-import { Box, useTheme } from "@mui/material";
+import { Box, useMediaQuery, useTheme } from "@mui/material";
 import { useLineChartQuery } from "state/api";
 
 const BarChart = ({ isDashboard = false }) => {
   const { data, isLoading } = useLineChartQuery();
+  const isNonMediumScreens = useMediaQuery("(min-width: 1200px)");
   const theme = useTheme();
 
   if (!data || isLoading) return "Loading...";
@@ -27,10 +28,10 @@ const BarChart = ({ isDashboard = false }) => {
 
   return (
     <Box
-      height={isDashboard ? "400px" : "100%"}
+      height={isDashboard ? "355px" : "100%"}
       width={undefined}
-      minHeight={isDashboard ? "325px" : undefined}
-      minWidth={isDashboard ? "325px" : undefined}
+      minHeight={isDashboard ? "300px" : undefined}
+      minWidth={isDashboard ? "300px" : undefined}
       position="relative"
     >
       <ResponsiveBar
@@ -68,14 +69,14 @@ const BarChart = ({ isDashboard = false }) => {
             },
           },
         }}
-        layout="horizontal"
+        layout={isNonMediumScreens ? "horizontal" : "vertical"}
         indexBy="value"
         valueScale={{ type: "linear" }}
         indexScale={{ type: "band", round: true }}
         colors={{ scheme: "paired" }}
         margin={
           isDashboard
-            ? { top: 40, right: 80, bottom: 100, left: 50 }
+            ? { top: 10, right: 80, bottom: 100, left: 50 }
             : { top: 40, right: 80, bottom: 80, left: 80 }
         }
         axisTop={null}
