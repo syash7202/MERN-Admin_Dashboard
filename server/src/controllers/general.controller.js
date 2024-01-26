@@ -38,4 +38,13 @@ const geoMapping = async (req, res) => {
   }
 };
 
-export { getData, geoMapping };
+const getLineChart = async (req, res) => {
+  try {
+    const lineChartStats = await Data.find();
+
+    res.status(200).json(lineChartStats);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+export { getData, geoMapping, getLineChart };

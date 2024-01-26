@@ -13,6 +13,7 @@ export const api = createApi({
     "Source",
     "Country",
     "GeoMapping",
+    "LineChart",
   ],
   endpoints: (build) => ({
     //dev test api for connections and particular search
@@ -78,6 +79,10 @@ export const api = createApi({
       query: () => `general/geoMap/`,
       providesTags: ["GeoMapping"],
     }),
+    lineChart: build.query({
+      query: () => `general/lineChart/`,
+      providesTags: ["LineChart"],
+    }),
   }),
 });
 
@@ -91,4 +96,5 @@ export const {
   useGetSourceQuery,
   useGetCountryQuery,
   useGeoMapQuery,
+  useLineChartQuery,
 } = api; // use and query additional and getData is endpoint

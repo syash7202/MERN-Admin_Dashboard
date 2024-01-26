@@ -14,6 +14,8 @@ import Source from "views/source";
 import Topic from "views/topic";
 import EndYear from "views/endYear";
 import Geography from "views/geoMapping";
+import LineChart from "views/lineChart";
+import Pie_Chart from "views/pieChart";
 
 function App() {
   const mode = useSelector((state) => state.global.mode);
@@ -29,6 +31,8 @@ function App() {
               <Route path="/" element={<Navigate to="/dashboard" replace />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/geoMap" element={<Geography />} />
+              <Route path="/lines" element={<LineChart />} />
+              <Route path="/pie" element={<Pie_Chart />} />
               <Route path="/year" element={<EndYear />} />
               <Route path="/topic" element={<Topic />} />
               <Route path="/sectors" element={<Sector />} />
