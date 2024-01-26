@@ -42,6 +42,11 @@ const BarChart = ({ isDashboard = false }) => {
                 stroke: theme.palette.secondary[200],
               },
             },
+            legend: {
+              text: {
+                fill: theme.palette.secondary[100],
+              },
+            },
             ticks: {
               line: {
                 stroke: theme.palette.secondary[200],
@@ -52,9 +57,9 @@ const BarChart = ({ isDashboard = false }) => {
               },
             },
           },
-          legend: {
+          legends: {
             text: {
-              fill: theme.palette.secondary[100],
+              fill: theme.palette.secondary[200],
             },
           },
           tooltip: {
