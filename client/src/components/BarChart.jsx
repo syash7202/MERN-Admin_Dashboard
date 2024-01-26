@@ -1,6 +1,6 @@
 import React from "react";
 import { ResponsiveBar } from "@nivo/bar";
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, useTheme } from "@mui/material";
 import { useLineChartQuery } from "state/api";
 
 const BarChart = ({ isDashboard = false }) => {
@@ -9,28 +9,21 @@ const BarChart = ({ isDashboard = false }) => {
 
   if (!data || isLoading) return "Loading...";
 
-  const colors = [
-    theme.palette.secondary[500],
-    theme.palette.secondary[300],
-    theme.palette.secondary[300],
-    theme.palette.secondary[500],
-  ];
-
-  const topicCount = data.reduce((acc, { end_year }) => {
-    if (!acc[end_year]) {
-      acc[end_year] = 0;
+  const intensityCount = data.reduce((acc, { intensity }) => {
+    if (!acc[intensity]) {
+      acc[intensity] = 0;
     }
-    acc[end_year]++;
+    acc[intensity]++;
     return acc;
   }, {});
 
-  const formattedData = Object.entries(topicCount).map(
-    ([end_year, count], i) => {
-      return { id: end_year, label: end_year, value: count, color: colors[i] };
+  const formattedData = Object.entries(intensityCount).map(
+    ([intensity, count], i) => {
+      return { id: intensity, value: count };
     }
   );
 
-  // console.log(formattedData);
+  //   console.log(formattedData);
 
   return (
     <Box
@@ -43,60 +36,92 @@ const BarChart = ({ isDashboard = false }) => {
       <ResponsiveBar
         data={formattedData}
         theme={{
+          axis: {
+            domain: {
+              line: {
+                stroke: theme.palette.secondary[200],
+              },
+            },
+            ticks: {
+              line: {
+                stroke: theme.palette.secondary[200],
+                strokeWidth: 1,
+              },
+              text: {
+                fill: theme.palette.secondary[200],
+              },
+            },
+          },
+          legend: {
+            text: {
+              fill: theme.palette.secondary[100],
+            },
+          },
           tooltip: {
             container: {
               color: theme.palette.primary.main,
             },
           },
         }}
-        colors={{ scheme: "nivo" }}
+        layout="horizontal"
+        indexBy="value"
+        valueScale={{ type: "linear" }}
+        indexScale={{ type: "band", round: true }}
+        colors={{ scheme: "paired" }}
         margin={
           isDashboard
             ? { top: 40, right: 80, bottom: 100, left: 50 }
             : { top: 40, right: 80, bottom: 80, left: 80 }
         }
-        sortByValue={false}
-        innerRadius={0.4}
-        startAngle={-15}
-        padAngle={2}
-        cornerRadius={3}
-        activeOuterRadiusOffset={8}
-        borderWidth={5}
-        borderColor={{
-          from: "color",
-          modifiers: [["darker", 0.2]],
+        axisTop={null}
+        axisRight={null}
+        axisBottom={{
+          tickSize: 5,
+          tickPadding: 5,
+          tickRotation: 0,
+          legend: "Number of articles",
+          legendPosition: "middle",
+          legendOffset: 32,
+          truncateTickAt: 0,
         }}
-        enableArcLinkLabels={!isDashboard}
-        arcLinkLabelsTextColor={theme.palette.secondary[200]}
-        arcLinkLabel={(e) => e.id + " (" + e.value + ")"}
-        arcLinkLabelsThickness={2}
-        arcLinkLabelsColor={{ from: "color" }}
-        arcLabelsSkipAngle={10}
-        arcLabelsTextColor={{
-          from: "color",
-          modifiers: [["darker", 2]],
-          theme: "labels.text.fill",
+        axisLeft={{
+          tickSize: 5,
+          tickPadding: 5,
+          tickRotation: 0,
+          legend: "Intensity",
+          legendPosition: "middle",
+          legendOffset: -40,
+          truncateTickAt: 0,
         }}
+        enableGridX={true}
+        enableGridY={false}
+        labelSkipWidth={12}
+        labelSkipHeight={12}
+        labelTextColor={{
+          from: "colors",
+          modifiers: [["darker", 1.6]],
+        }}
+        borderRadius={10}
+        borderColor={{ theme: "background" }}
         legends={[
           {
+            dataFrom: "formattedData",
             anchor: "bottom-right",
             direction: "column",
             justify: false,
-            translateX: 38,
-            translateY: 56,
-            itemsSpacing: 5,
+            translateX: 120,
+            translateY: 0,
+            itemsSpacing: 2,
             itemWidth: 100,
-            itemHeight: 18,
-            itemTextColor: "#999",
+            itemHeight: 20,
             itemDirection: "left-to-right",
-            itemOpacity: 1,
-            symbolSize: 18,
-            symbolShape: "circle",
+            itemOpacity: 0.85,
+            symbolSize: 20,
             effects: [
               {
                 on: "hover",
                 style: {
-                  itemTextColor: "#00f900",
+                  itemOpacity: 1,
                 },
               },
             ],
@@ -107,7 +132,7 @@ const BarChart = ({ isDashboard = false }) => {
         position="absolute"
         top="50%"
         left="50%"
-        color={theme.palette.secondary[400]}
+        color={theme.palette.secondary[100]}
         textAlign="center"
         pointerEvents="none"
         sx={{
@@ -115,11 +140,7 @@ const BarChart = ({ isDashboard = false }) => {
             ? "translate(-75%, -170%)"
             : "translate(-50%, -100%)",
         }}
-      >
-        <Typography variant="h6">
-          {!isDashboard && "End Year wise distribution"}
-        </Typography>
-      </Box>
+      ></Box>
     </Box>
   );
 };

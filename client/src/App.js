@@ -16,6 +16,7 @@ import EndYear from "views/endYear";
 import Geography from "views/geoMapping";
 import LineChart from "views/lineChart";
 import Pie_Chart from "views/pieChart";
+import Bar_Chart from "views/barChart";
 
 function App() {
   const mode = useSelector((state) => state.global.mode);
@@ -33,6 +34,7 @@ function App() {
               <Route path="/geoMap" element={<Geography />} />
               <Route path="/lines" element={<LineChart />} />
               <Route path="/pie" element={<Pie_Chart />} />
+              <Route path="/bar" element={<Bar_Chart />} />
               <Route path="/year" element={<EndYear />} />
               <Route path="/topic" element={<Topic />} />
               <Route path="/sectors" element={<Sector />} />

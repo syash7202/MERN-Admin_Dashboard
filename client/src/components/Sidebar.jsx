@@ -53,6 +53,10 @@ const navItems = [
     icon: <PointOfSaleOutlined />,
   },
   {
+    text: "Bar",
+    icon: <PointOfSaleOutlined />,
+  },
+  {
     text: "Fliters",
     icon: null,
   },
