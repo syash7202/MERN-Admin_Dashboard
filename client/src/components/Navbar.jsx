@@ -9,14 +9,9 @@ import {
 } from "@mui/icons-material";
 import {
   AppBar,
-  Button,
-  Box,
-  Typography,
   IconButton,
   InputBase,
   Toolbar,
-  Menu,
-  MenuItem,
   useTheme,
 } from "@mui/material";
 import FlexBetween from "components/flexBetween.jsx";
@@ -45,6 +40,7 @@ const Navbar = ({ isSidebarOpen, setIsSidebarOpen }) => {
             borderRadius="9px"
             gap="3rem"
             p="0.1rem 2.5rem"
+            color="white"
           >
             <InputBase placeholder="Search..." />
             <IconButton>

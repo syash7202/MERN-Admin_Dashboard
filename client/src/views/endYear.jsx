@@ -65,7 +65,7 @@ const EndYear = () => {
           },
           "& .MuiDataGrid-columnHeaders": {
             backgroundColor: theme.palette.background.alt,
-            color: theme.palette.secondary[100],
+            color: theme.palette.secondary[500],
             borderBottom: "none",
           },
           "& .MuiDataGrid-virtualScroller": {
@@ -73,11 +73,16 @@ const EndYear = () => {
           },
           "& .MuiDataGrid-footerContainer": {
             backgroundColor: theme.palette.background.alt,
-            color: theme.palette.secondary[100],
+            color: "theme.palette.secondary[500]",
+            borderTop: "none",
+          },
+          "& .MuiTablePagination-toolbar": {
+            backgroundColor: theme.palette.background.alt,
+            color: "theme.palette.secondary[500]",
             borderTop: "none",
           },
           "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
-            color: `${theme.palette.secondary[200]} !important`,
+            color: `${theme.palette.secondary[500]} !important`,
           },
         }}
       >

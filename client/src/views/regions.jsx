@@ -4,11 +4,11 @@ import { DataGrid } from "@mui/x-data-grid";
 import { DataGridCustomToolbar } from "components/DataGridCustomToolbar.jsx";
 import { useGetRegionQuery } from "state/api.js";
 import Header from "components/Header.jsx";
+
 const Region = () => {
   const theme = useTheme();
 
   const [search, setSearch] = useState("");
-
   const [searchInput, setSearchInput] = useState("");
   const { data, isLoading } = useGetRegionQuery({
     search,
