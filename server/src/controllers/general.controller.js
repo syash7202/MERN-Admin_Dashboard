@@ -47,4 +47,28 @@ const getLineChart = async (req, res) => {
     res.status(404).json({ message: error.message });
   }
 };
-export { getData, geoMapping, getLineChart };
+
+const getRadarChart = async (req, res) => {
+  try {
+    const data = await Data.find();
+
+    const regions = data.reduce((acc, { region }) => {
+      if (!acc[region]) {
+        acc[region] = 0;
+      }
+      acc[region]++;
+
+      return acc;
+    }, {});
+
+    const extractedData = Object.entries(regions).map(([region, count], i) => {
+      return { region: region, articles: count };
+    });
+
+    res.status(200).json(extractedData);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
+export { getData, geoMapping, getLineChart, getRadarChart };

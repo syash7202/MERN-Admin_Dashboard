@@ -14,6 +14,7 @@ export const api = createApi({
     "Country",
     "GeoMapping",
     "LineChart",
+    "RadarChart",
   ],
   endpoints: (build) => ({
     //dev test api for connections and particular search
@@ -83,6 +84,10 @@ export const api = createApi({
       query: () => `general/lineChart/`,
       providesTags: ["LineChart"],
     }),
+    radarChart: build.query({
+      query: () => `general/radarChart/`,
+      providesTags: ["RadarChart"],
+    }),
   }),
 });
 
@@ -97,4 +102,5 @@ export const {
   useGetCountryQuery,
   useGeoMapQuery,
   useLineChartQuery,
+  useRadarChartQuery,
 } = api; // use and query additional and getData is endpoint

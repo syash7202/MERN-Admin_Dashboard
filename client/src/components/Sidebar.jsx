@@ -26,6 +26,7 @@ import {
   AdminPanelSettingsOutlined,
 } from "@mui/icons-material";
 import BarChartIcon from "@mui/icons-material/BarChart";
+import TrackChangesIcon from "@mui/icons-material/TrackChanges";
 import PieChartOutlined from "@mui/icons-material/PieChartOutlined";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -52,6 +53,10 @@ const navItems = [
   {
     text: "Bar",
     icon: <BarChartIcon />,
+  },
+  {
+    text: "Radar",
+    icon: <TrackChangesIcon />,
   },
   {
     text: "Fliters",

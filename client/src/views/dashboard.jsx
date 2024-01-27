@@ -12,7 +12,6 @@ import { DataGrid } from "@mui/x-data-grid";
 import BarChart from "components/BarChart";
 import PieChart from "components/PieChart";
 import { useLineChartQuery } from "state/api";
-import { DownloadOutlined } from "@mui/icons-material";
 import Clock from "components/Time";
 
 const Dashboard = () => {
